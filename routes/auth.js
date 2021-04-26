@@ -1,5 +1,4 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
 const signupTemplate = require('../views/auth/signup');
 const signinTemplate = require('../views/auth/signin');
 const { handleErrors } = require('./middlewares');
@@ -14,14 +13,6 @@ const {
   requireValidPassword,
 } = require('./validators');
 
-const hashPassword = (password) => {
-  return new Promise((resolve, reject) =>
-    bcrypt.hash(password, 10, (err, hash) => {
-      err ? reject(err) : resolve(hash);
-    })
-  );
-};
-
 const router = express.Router();
 
 router.get('/signup', (req, res) => {
@@ -32,12 +23,10 @@ router.post(
   '/signup',
   [requireEmail, requirePassword, requirePasswordConfirm],
   handleErrors(signupTemplate),
-  async (req, res) => {
-    const email = req.body.email;
-    const hash = bcrypt.hashSync(String(req.body.password), 10);
+  (req, res) => {
+    const { email, password } = req.body;
 
-    db.addLogin(hash, email);
-
+    db.addLogin(password, email);
     res.redirect('/');
   }
 );
@@ -56,8 +45,7 @@ router.post(
   [requireEmailExists, requireValidPassword],
   handleErrors(signinTemplate),
   async (req, res) => {
-    const loginEmail = req.body.loginEmail;
-    const loginPassword = req.body.loginPassword;
+    const { loginEmail, loginPassword } = req.body;
     db.validate(loginEmail, loginPassword).then((valid) =>
       res.send(String(valid))
     );
