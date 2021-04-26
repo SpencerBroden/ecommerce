@@ -26,7 +26,7 @@ router.post(
   async (req, res) => {
     const { email, password } = req.body;
 
-    db.addLogin(password, email);
+    await db.addLogin(password, email);
     res.redirect('/');
   }
 );
