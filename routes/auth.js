@@ -34,10 +34,9 @@ router.post(
   handleErrors(signupTemplate),
   async (req, res) => {
     const email = req.body.email;
-    const password = bcrypt.hashSync(String(req.body.password), 10);
+    const hash = bcrypt.hashSync(String(req.body.password), 10);
 
-    db.addUser(password, email);
-    db.addUser(username, email);
+    db.addLogin(hash, email);
 
     res.redirect('/');
   }
