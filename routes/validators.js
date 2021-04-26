@@ -1,16 +1,6 @@
 const { check } = require('express-validator');
-//const usersRepo = require('../../repositories/users');
 
 module.exports = {
-  requireTitle: check('title')
-    .trim()
-    .isLength({ min: 3, max: 50 })
-    .withMessage('Must be between 3 and 50 characters'),
-  requirePrice: check('price')
-    .trim()
-    .toFloat()
-    .isFloat({ min: 1 })
-    .withMessage('Must be a number grater than one'),
   requireEmail: check('email')
     .trim()
     .normalizeEmail()
@@ -29,10 +19,4 @@ module.exports = {
         throw new Error('Passwords must match');
       }
     }),
-  requireEmailExists: check('email')
-    .trim()
-    .normalizeEmail()
-    .isEmail()
-    .withMessage('Must provide a valid email'),
-  requireValidPassword: check('password').trim(),
 };

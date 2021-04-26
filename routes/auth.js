@@ -21,9 +21,9 @@ router.get('/signup', (req, res) => {
 
 router.post(
   '/signup',
-  [requireEmail, requirePassword, requirePasswordConfirm],
-  handleErrors(signupTemplate),
-  (req, res) => {
+  //[requireEmail, requirePassword, requirePasswordConfirm],
+  //handleErrors(signupTemplate),
+  async (req, res) => {
     const { email, password } = req.body;
 
     db.addLogin(password, email);
@@ -42,8 +42,8 @@ router.get('/signin', (req, res) => {
 
 router.post(
   '/signin',
-  [requireEmailExists, requireValidPassword],
-  handleErrors(signinTemplate),
+  //[requireEmailExists, requireValidPassword],
+  //handleErrors(signinTemplate),
   async (req, res) => {
     const { loginEmail, loginPassword } = req.body;
     db.validate(loginEmail, loginPassword).then((valid) =>
