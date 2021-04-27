@@ -22,7 +22,7 @@ app.get('/signup', (req, res) => {
 
 app.post('/signup', async (req, res) => {
   const { email, password } = req.body;
-  await db.addLogin(password, email);
+  const user = await db.addLogin(password, email);
   res.redirect('/');
 });
 
