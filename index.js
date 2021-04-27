@@ -8,6 +8,8 @@ const db = require('./model');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(cookieSession({ keys: ['qwertyuiop'] }));
+app.use(authRouter);
 
 app.get('/', async (req, res) => {
   const products = [{}];
