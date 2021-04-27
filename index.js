@@ -20,11 +20,9 @@ app.get('/signup', (req, res) => {
   res.send(signupTemplate({ req }));
 });
 
-app.post('/signup', async (req, res) => {
+app.post('/signup', (req, res) => {
   const { email, password } = req.body;
-  try {
-    await db.addLogin(password, email);
-  } catch (err) {}
+  db.addLogin(password, email);
   res.redirect('/');
 });
 
