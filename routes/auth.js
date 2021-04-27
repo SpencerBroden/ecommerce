@@ -10,9 +10,7 @@ router.get('/signup', (req, res) => {
 });
 
 router.post('/signup', (req, res) => {
-  const { email, password } = req.body;
-
-  db.addLogin(password, email);
+  db.handleRegister(req);
   res.redirect('/');
 });
 
