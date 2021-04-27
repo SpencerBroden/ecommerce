@@ -18,7 +18,7 @@ app.get('/signup', (req, res) => {
   res.send(signupTemplate({ req }));
 });
 
-app.post('/signup', async (req, res) => {
+app.post('/api/signup', async (req, res) => {
   const { email, password } = req.body;
   try {
     await db.addLogin(password, email);

@@ -1,6 +1,37 @@
 const layout = require('../layout');
 const { getError } = require('../helpers');
 
+const register = () => {
+  if (validateEmail(registerEmail) === false) {
+    alert('Please enter a valid email address.');
+  } else if (validatePassword(registerPassword) === false) {
+    alert(
+      'Passwords must contain at least one uppercase letter, one lowercase letter, and need to be at least 8 characters long.'
+    );
+  } else if (registerPassword.localeCompare(repeatPassword) !== 0) {
+    alert('Passwords should match.');
+  } else if (check === false) {
+    alert('Please agree to the terms and conditions.');
+  } else {
+    Axios.post('https://ecs-cheng-alvis-api.herokuapp.com/email', {
+      email: registerEmail,
+    }).then((response) => {
+      //console.log(String(response.data));
+      if (String(response.data) === 'false') {
+        Axios.post('https://ecs-cheng-alvis-api.herokuapp.com/register', {
+          email: email,
+          password: password,
+        }).then((response) => {
+          //console.log(response);
+        });
+      } else {
+        //console.log(String(response.data));
+        alert('This email is already in use.');
+      }
+    });
+  }
+};
+
 module.exports = ({ req, errors }) => {
   return layout({
     content: `
