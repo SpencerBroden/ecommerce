@@ -2,8 +2,10 @@ const knex = require('knex');
 
 const db = knex({
   client: 'pg',
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: false,
+  },
 });
 
 const handleRegister = (req, res) => {
@@ -14,7 +16,7 @@ const handleRegister = (req, res) => {
   db.transaction((trx) => {
     trx
       .insert({
-        hash: hash,
+        hash: password,
         email: email,
       })
       .into('login')
