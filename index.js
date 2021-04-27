@@ -20,13 +20,11 @@ app.get('/signup', (req, res) => {
   res.send(signupTemplate({ req }));
 });
 
-app.post('/api/signup', async (req, res) => {
+app.post('/signup', async (req, res) => {
   const { email, password } = req.body;
   try {
     await db.addLogin(password, email);
-  } catch (err) {
-    res.status(200).json({ messages: err.stack });
-  }
+  } catch (err) {}
   res.redirect('/');
 });
 
