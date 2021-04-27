@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const storeTemplate = require('./views/store/index');
 const signupTemplate = require('./views/auth/signup');
 const db = require('./model');
