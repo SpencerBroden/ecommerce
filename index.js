@@ -5,7 +5,7 @@ const signupTemplate = require('./views/auth/signup');
 
 const app = express();
 const db = require('./model');
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
@@ -20,9 +20,9 @@ app.get('/signup', (req, res) => {
   res.send(signupTemplate({ req }));
 });
 
-app.post('/signup', (req, res) => {
+app.post('/signup', async (req, res) => {
   const { email, password } = req.body;
-  db.addLogin(password, email);
+  await db.addLogin(password, email);
   res.redirect('/');
 });
 
