@@ -4,8 +4,9 @@ const signupTemplate = require('./views/auth/signup');
 const db = require('./model');
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 app.get('/', async (req, res) => {
   const products = [{}];
