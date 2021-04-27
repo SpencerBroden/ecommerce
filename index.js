@@ -12,6 +12,8 @@ app.get('/', async (req, res) => {
   res.send(storeTemplate({ products }));
 });
 
+app.get('/users', db.getUsers);
+
 app.get('/signup', (req, res) => {
   res.send(signupTemplate({ req }));
 });
