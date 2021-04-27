@@ -1,4 +1,3 @@
-const { nextTick } = require('node:process');
 const { Pool } = require('pg');
 
 let connString = process.env.DATABASE_URL;
