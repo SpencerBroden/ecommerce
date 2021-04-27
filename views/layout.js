@@ -1,4 +1,4 @@
-module.exports = ({ content }) => {
+module.exports = ({ content, id }) => {
   return `
     <!DOCTYPE html>
       <html lang="en">
@@ -41,6 +41,9 @@ module.exports = ({ content }) => {
         <div class="container">
           ${content}
         </div>
+        <div class="container">
+        Your id is: ${id}
+      </div>
       </body>
     </html>
   `;

@@ -8,11 +8,7 @@ module.exports = ({ products }) => {
         <td>${product.title}</td>
         <td>${product.price}</td>
         <td>
-          <a href="/">
-            <button class="button is-link">
-              Quantity 
-            </button>
-          </a>
+            <input type="text" id="quantity" name="quantity">
         </td>
         <td>
           <form method="POST" action="/">
