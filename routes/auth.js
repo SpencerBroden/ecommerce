@@ -9,8 +9,9 @@ router.get('/signup', (req, res) => {
   res.send(signupTemplate({ req }));
 });
 
-router.post('/signup', (req, res) => {
-  db.handleRegister(req);
+router.post('/signup', async (req, res) => {
+  const { email, password } = req.body;
+  await db.addLogin(password, email);
   res.redirect('/');
 });
 
