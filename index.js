@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const storeTemplate = require('./views/store/index');
 const signupTemplate = require('./views/auth/signup');
-const db = require('./model');
-const app = express();
 
+const app = express();
+const db = require('./model');
 // app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
