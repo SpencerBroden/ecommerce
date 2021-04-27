@@ -18,7 +18,11 @@ app.get('/signup', (req, res) => {
 
 app.post('/signup', async (req, res) => {
   const { email, password } = req.body;
-  db.addLogin(password, email);
+  try {
+    await db.addLogin(password, email);
+  } catch (err) {
+    res.status(200).json({ messages: err.stack });
+  }
   res.redirect('/');
 });
 
