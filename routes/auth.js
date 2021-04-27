@@ -23,8 +23,9 @@ router.post(
   async (req, res) => {
     const { email, password } = req.body;
     const user = await db.addLogin(password, email);
-
-    req.session.userId = user.id;
+    if (user) {
+      req.session.userId = user.id;
+    }
 
     res.redirect('/');
   }
@@ -39,7 +40,7 @@ router.get('/signin', (req, res) => {
   res.send(signinTemplate({}));
 });
 
-router.post('/signin', handleErrors(signinTemplate), async (req, res) => {
+router.post('/signin', async (req, res) => {
   const { email } = req.body;
 
   req.session.userId = user.id;
