@@ -8,6 +8,7 @@ module.exports = ({ req, errors }) => {
           <div class="column is-one-quarter">
             <form method="POST">
               <h1 class="title">Sign Up</h1>
+              <small style="color: red;">WARNING:Do not use real information</small>
               <div class="field">
                 <label class="label">Name</label>
                 <input required class="input" placeholder="Name" name="name" />
