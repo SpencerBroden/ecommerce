@@ -34,7 +34,33 @@ const getLogin = (email) => {
   );
 };
 
+const getProduct = () => {
+  return new Promise((resolve, reject) =>
+    pool.query('SELECT * FROM products', (error, result) => {
+      if (error) {
+        throw error;
+      } else if (result.rows.length > 0) {
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    })
+  );
+};
+
 const addLogin = (hash, email) => {
+  pool.query(
+    'INSERT INTO login(hash, email) VALUES($1, $2)',
+    [hash, email],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+    }
+  );
+};
+
+const addCart = (req) => {
   pool.query(
     'INSERT INTO login(hash, email) VALUES($1, $2)',
     [hash, email],
@@ -49,7 +75,6 @@ const addLogin = (hash, email) => {
 module.exports = {
   getUsers,
   addLogin,
-  //addUser,
-  //validate,
+  getProduct,
   getLogin,
 };

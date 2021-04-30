@@ -17,15 +17,8 @@ module.exports = ({ content, id }) => {
             <div class="container navbar-container">
               <div>
                 <a href="/">
-                  <h3 class="title">Ecommerce</h3>
+                  <h3 class="title">Ecommerce Shop</h3>
                 </a>
-              </div>
-              <div class="navbar-item">
-                <div class="navbar-buttons">
-                  <div class="navbar-item">
-                    <a href="/signin" class="button is-link">Sign In</a>
-                  </div> 
-                </div> 
               </div>
               <div class="navbar-item">
               <div class="navbar-buttons">
@@ -42,7 +35,8 @@ module.exports = ({ content, id }) => {
           ${content}
         </div>
         <div class="container">
-        Your id is: ${id}
+        </br></br>
+        <a href="/users" class="button is-primary">Check Customer</a>
       </div>
       </body>
     </html>

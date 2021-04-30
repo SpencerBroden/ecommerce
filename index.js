@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const cookieSession = require('cookie-session');
+
 const authRouter = require('./routes/auth');
 const storeTemplate = require('./views/store/index');
 const products = require('./products.json');
@@ -9,12 +9,10 @@ const db = require('./model');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-app.use(cookieSession({ keys: ['qwertyuiop'] }));
 app.use(authRouter);
-const user = { id: '' };
 app.get('/', async (req, res) => {
   //const products = [{ title: 'Shoe', price: 10 }];
-  res.send(storeTemplate({ products, user }));
+  res.send(storeTemplate({ products }));
 });
 
 app.get('/users', db.getUsers);

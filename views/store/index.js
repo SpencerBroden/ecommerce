@@ -1,5 +1,7 @@
 const layout = require('../layout');
 
+let cart;
+
 module.exports = ({ products }) => {
   const renderedProducts = products
     .map((product) => {
@@ -11,9 +13,7 @@ module.exports = ({ products }) => {
             <input type="text" id="quantity" name="quantity">
         </td>
         <td>
-          <form method="POST" action="/">
             <button class="button is-link">Add</button>
-          </form>
         </td>
       </tr>
     `;
@@ -41,3 +41,22 @@ module.exports = ({ products }) => {
     `,
   });
 };
+
+// </br>
+// <div class="control">
+//   <h1 class="subtitle">Checkout</h1>
+// </div>
+// <table class="table">
+//   <thead>
+//     <tr>
+//       <th>Name</th>
+//       <th>Price</th>
+//       <th>Quantity</th>
+//       <th>Remove</th>
+//     </tr>
+//   </thead>
+//   <tbody>
+//   ${checkoutProducts}
+//   </tbody>
+// </table>
+// <button class="button is-primary">Checkout</button>

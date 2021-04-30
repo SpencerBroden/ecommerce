@@ -1,14 +1,9 @@
 const express = require('express');
-
-const { handleErrors } = require('./middlewares');
+const { validationResult } = require('express-validator');
+const { check } = require('express-validator');
 const signupTemplate = require('../views/auth/signup');
-const signinTemplate = require('../views/auth/signin');
+
 const db = require('../model');
-const {
-  requireEmail,
-  requirePassword,
-  requirePasswordConfirm,
-} = require('./validators');
 
 const router = express.Router();
 
@@ -18,34 +13,28 @@ router.get('/signup', (req, res) => {
 
 router.post(
   '/signup',
-  [requireEmail, requirePassword, requirePasswordConfirm],
-  handleErrors(signupTemplate),
+  [
+    check('email')
+      .trim()
+      .normalizeEmail()
+      .isEmail()
+      .withMessage('Must be a valid email'),
+    check('password')
+      .trim()
+      .isLength({ min: 4, max: 20 })
+      .withMessage('Must be between 4 and 20 characters'),
+  ],
   async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.send(templateFunc({ errors }));
+    }
     const { email, password } = req.body;
     const user = await db.addLogin(password, email);
-    if (user) {
-      req.session.userId = user.id;
-    }
 
     res.redirect('/');
   }
 );
-
-router.get('/signout', (req, res) => {
-  req.session = null;
-  res.send('You are logged out');
-});
-
-router.get('/signin', (req, res) => {
-  res.send(signinTemplate({}));
-});
-
-router.post('/signin', async (req, res) => {
-  const { email } = req.body;
-
-  req.session.userId = user.id;
-
-  res.send('/');
-});
 
 module.exports = router;
