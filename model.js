@@ -8,12 +8,15 @@ const pool = new Pool({
 });
 
 const getUsers = (request, response) => {
-  pool.query('SELECT * FROM customer ORDER BY id ASC', (error, results) => {
-    if (error) {
-      throw error;
+  pool.query(
+    'SELECT * FROM customer ORDER BY customer_id ASC',
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
     }
-    response.status(200).json(results.rows);
-  });
+  );
 };
 
 const getCustomer = (email) => {
