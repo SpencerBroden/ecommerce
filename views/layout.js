@@ -36,7 +36,9 @@ module.exports = ({ content, id }) => {
         </div>
         <div class="container">
         </br></br>
-        <a href="/users" class="button is-primary">Check Customer</a>
+        <a href="/users" class="button is-primary">Check Customers</a>
+        <a href="" class="button is-primary">Check Products</a>
+        <a href="" class="button is-primary">Check Orders</a>
       </div>
       </body>
     </html>
