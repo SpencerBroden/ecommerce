@@ -38,6 +38,12 @@ module.exports = ({ products }) => {
           ${renderedProducts}
         </tbody>
       </table>
+      <div class="container">
+      </br></br>
+      <a href="/users" class="button is-primary">Check Customers</a>
+      <a href="" class="button is-primary">Check Products</a>
+      <a href="" class="button is-primary">Check Orders</a>
+    </div>
     `,
   });
 };
