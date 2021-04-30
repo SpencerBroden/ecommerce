@@ -28,10 +28,10 @@ router.post(
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.send(templateFunc({ errors }));
+      return res.send(signupTemplate({ errors }));
     }
-    const { email, password } = req.body;
-    const user = await db.addLogin(password, email);
+    const { name, email, password, address, phone } = req.body;
+    const user = await db.addCustomer(name, email, password, address, phone);
 
     res.redirect('/');
   }

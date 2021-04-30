@@ -8,7 +8,7 @@ const pool = new Pool({
 });
 
 const getUsers = (request, response) => {
-  pool.query('SELECT * FROM login ORDER BY id ASC', (error, results) => {
+  pool.query('SELECT * FROM customer ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error;
     }
@@ -16,10 +16,10 @@ const getUsers = (request, response) => {
   });
 };
 
-const getLogin = (email) => {
+const getCustomer = (email) => {
   return new Promise((resolve, reject) =>
     pool.query(
-      'SELECT * FROM login WHERE email = $1',
+      'SELECT * FROM customer WHERE email = $1',
       [email],
       (error, result) => {
         if (error) {
@@ -48,10 +48,10 @@ const getProduct = () => {
   );
 };
 
-const addLogin = (hash, email) => {
+const addCustomer = (name, email, password, address, phone) => {
   pool.query(
-    'INSERT INTO login(hash, email) VALUES($1, $2)',
-    [hash, email],
+    'INSERT INTO customer(name, email, password, address, phone) VALUES($1, $2, $3, $4, $5)',
+    [name, email, password, address, phone],
     (error, results) => {
       if (error) {
         throw error;
@@ -74,7 +74,7 @@ const addCart = (req) => {
 
 module.exports = {
   getUsers,
-  addLogin,
+  addCustomer,
   getProduct,
-  getLogin,
+  getCustomer,
 };

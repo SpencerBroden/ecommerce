@@ -10,8 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(authRouter);
+
 app.get('/', async (req, res) => {
-  //const products = [{ title: 'Shoe', price: 10 }];
   res.send(storeTemplate({ products }));
 });
 
