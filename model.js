@@ -19,6 +19,27 @@ const getUsers = (request, response) => {
   );
 };
 
+const getProducts = (request, response) => {
+  pool.query(
+    'SELECT * FROM product ORDER BY product_id ASC',
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    }
+  );
+};
+
+const getOrders = (request, response) => {
+  pool.query('SELECT * FROM order ORDER BY order_id ASC', (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
+
 const getCustomer = (email) => {
   return new Promise((resolve, reject) =>
     pool.query(
@@ -77,6 +98,8 @@ const addCart = (req) => {
 
 module.exports = {
   getUsers,
+  getProducts,
+  getOrders,
   addCustomer,
   getProduct,
   getCustomer,

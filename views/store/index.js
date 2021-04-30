@@ -40,29 +40,10 @@ module.exports = ({ products }) => {
       </table>
       <div class="container">
       </br></br>
-      <a href="/users" class="button is-primary">Check Customers</a>
-      <a href="" class="button is-primary">Check Products</a>
-      <a href="" class="button is-primary">Check Orders</a>
+      <a href="/api/users" class="button is-primary">Check Customers</a>
+      <a href="/api/products" class="button is-primary">Check Products</a>
+      <a href="/api/orders" class="button is-primary">Check Orders</a>
     </div>
     `,
   });
 };
-
-// </br>
-// <div class="control">
-//   <h1 class="subtitle">Checkout</h1>
-// </div>
-// <table class="table">
-//   <thead>
-//     <tr>
-//       <th>Name</th>
-//       <th>Price</th>
-//       <th>Quantity</th>
-//       <th>Remove</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//   ${checkoutProducts}
-//   </tbody>
-// </table>
-// <button class="button is-primary">Checkout</button>

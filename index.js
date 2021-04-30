@@ -15,7 +15,11 @@ app.get('/', async (req, res) => {
   res.send(storeTemplate({ products }));
 });
 
-app.get('/users', db.getUsers);
+app.get('/api/users', db.getUsers);
+
+app.get('/api/products', db.getProducts);
+
+app.get('/api/orders', db.getOrders);
 
 app.listen(process.env.PORT || 4000, () => {
   console.log(`app is running on port ${process.env.PORT || 4000}`);
