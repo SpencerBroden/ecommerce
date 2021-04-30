@@ -32,12 +32,15 @@ const getProducts = (request, response) => {
 };
 
 const getOrders = (request, response) => {
-  pool.query('SELECT * FROM order ORDER BY order_id ASC', (error, results) => {
-    if (error) {
-      throw error;
+  pool.query(
+    "SELECT * FROM 'order' ORDER BY order_id ASC",
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
     }
-    response.status(200).json(results.rows);
-  });
+  );
 };
 
 const getCustomer = (email) => {
@@ -60,7 +63,7 @@ const getCustomer = (email) => {
 
 const getProduct = () => {
   return new Promise((resolve, reject) =>
-    pool.query('SELECT * FROM products', (error, result) => {
+    pool.query('SELECT * FROM product', (error, result) => {
       if (error) {
         throw error;
       } else if (result.rows.length > 0) {
