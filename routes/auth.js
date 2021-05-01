@@ -39,7 +39,7 @@ router.post(
       return res.send(signupTemplate({ errors }));
     }
     const { name, email, password, address, phone } = req.body;
-    //const customer = await db.addCustomer(name, email, address, phone);
+
     bcrypt.genSalt(saltRounds, function (err, salt) {
       bcrypt.hash(password, salt, function (err, hash) {
         db.addCustomer(name, email, address, hash, phone);
