@@ -95,20 +95,14 @@ const addCustomer = (name, email, address, hash, phone) => {
 };
 
 const addOrder = (quantity, total, order_date, customer_id, product_id) => {
-  return new Promise((resolve, reject) =>
-    pool.query(
-      'INSERT INTO orders(quantity, total, order_date, customer_id, product_id) VALUES($1, $2, $3, $4, $5)',
-      [quantity, total, order_date, customer_id, product_id],
-      (error, results) => {
-        if (error) {
-          throw error;
-        } else if (result.rows.length > 0) {
-          resolve(true);
-        } else {
-          resolve(false);
-        }
+  pool.query(
+    'INSERT INTO orders(quantity, total, order_date, customer_id, product_id) VALUES($1, $2, $3, $4, $5)',
+    [quantity, total, order_date, customer_id, product_id],
+    (error, results) => {
+      if (error) {
+        throw error;
       }
-    )
+    }
   );
 };
 

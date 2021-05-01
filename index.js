@@ -24,17 +24,9 @@ app.post('/', async (req, res) => {
   const { quantity, price, customer_id, product_id } = req.body;
   // TO FIX customer_id
   const total = quantity * price;
-  if (!quantity) {
-    res.redirect('/');
-  }
+  const now = to_timestamp(Date.now() / 1000);
   try {
-    db.addOrder(
-      quantity,
-      total,
-      to_timestamp(Date.now() / 1000),
-      1,
-      product_id
-    );
+    db.addOrder(quantity, total, now, 1, product_id);
   } catch {
     res.redirect('/');
   }
