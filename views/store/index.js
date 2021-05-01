@@ -14,7 +14,7 @@ module.exports = ({ products }) => {
               <input form="${product.product_id}" required class="input" type="text" name="quantity">
           </td>
           <td>
-              <button form="${product.product_id}" class="button is-link">Order</button>
+          <form id="${product.product_id}" method="POST"><button class="button is-link">Order</button></form>
           </td>
         </tr>
     `;
@@ -23,11 +23,6 @@ module.exports = ({ products }) => {
 
   return layout({
     content: `
-    <form id="1" method="POST">
-    <form id="2" method="POST">
-    <form id="3" method="POST">
-    <form id="4" method="POST">
-    <form id="5" method="POST">
       <div class="control">
         <h1 class="subtitle">Products</h1>  
       </div>
@@ -44,11 +39,6 @@ module.exports = ({ products }) => {
           ${renderedProducts}
         </tbody>
       </table>
-      </form>
-      </form>
-      </form>
-      </form>
-      </form>
       <div class="container">
         </br>
         <a href="/api/users" class="button is-primary">Check Customers</a>
