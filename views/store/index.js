@@ -4,17 +4,17 @@ module.exports = ({ products }) => {
   const renderedProducts = products
     .map((product) => {
       return `
-      <input form="myform" type="hidden" name="product_name" value="${product.product_name}">
-      <input form="myform" type="hidden" name="price" value="${product.price}">
-      <input form="myform" type="hidden" name="price" value="${product.product_id}">
+      <input form="${product.product_id}" type="hidden" name="product_name" value="${product.product_name}">
+      <input form="${product.product_id}" type="hidden" name="price" value="${product.price}">
+      <input form="${product.product_id}" type="hidden" name="price" value="${product.product_id}">
         <tr>
           <td>${product.product_name}</td>
           <td>${product.price}</td>
           <td>
-              <input form="myform" required class="input" type="text" name="quantity">
+              <input form="${product.product_id}" required class="input" type="text" name="quantity">
           </td>
           <td>
-              <button form="myform" class="button is-link">Order</button>
+              <button form="${product.product_id}" class="button is-link">Order</button>
           </td>
         </tr>
     `;
@@ -23,7 +23,11 @@ module.exports = ({ products }) => {
 
   return layout({
     content: `
-    <form id="myform" method="POST">
+    <form id="1" method="POST">
+    <form id="2" method="POST">
+    <form id="3" method="POST">
+    <form id="4" method="POST">
+    <form id="5" method="POST">
       <div class="control">
         <h1 class="subtitle">Products</h1>  
       </div>
@@ -40,7 +44,11 @@ module.exports = ({ products }) => {
           ${renderedProducts}
         </tbody>
       </table>
-      </form
+      </form>
+      </form>
+      </form>
+      </form>
+      </form>
       <div class="container">
         </br>
         <a href="/api/users" class="button is-primary">Check Customers</a>
