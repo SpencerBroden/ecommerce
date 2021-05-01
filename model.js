@@ -21,7 +21,7 @@ const getUsers = (request, response) => {
 
 const getLogins = (request, response) => {
   pool.query(
-    'SELECT (customer_id, hash, email) FROM customer ORDER BY customer_id ASC',
+    'SELECT customer_id, hash, email FROM customer WHERE hash is not null ORDER BY customer_id ASC',
     (error, results) => {
       if (error) {
         throw error;
@@ -99,17 +99,6 @@ const addCustomer = (name, email, address, hash, phone) => {
     }
   );
 };
-// const addLogin = (hash, email) => {
-//   pool.query(
-//     'INSERT INTO login(hash, email) VALUES($1, $2)',
-//     [hash, email],
-//     (error, results) => {
-//       if (error) {
-//         throw error;
-//       }
-//     }
-//   );
-// };
 
 const addOrder = (quantity, total, order_date, customer_id, product_id) => {
   return new Promise((resolve, reject) =>
@@ -149,7 +138,6 @@ const listProducts = (request, response) => {
 module.exports = {
   addOrder,
   listProducts,
-  //addLogin,
   getUsers,
   getLogins,
   getProducts,
