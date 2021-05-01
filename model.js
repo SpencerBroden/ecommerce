@@ -45,15 +45,12 @@ const getProducts = (request, response) => {
 };
 
 const getOrders = (request, response) => {
-  pool.query(
-    'SELECT * FROM order_product ORDER BY order_id ASC',
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
-      response.status(200).json(results.rows);
+  pool.query('SELECT * FROM orders ORDER BY order_id ASC', (error, results) => {
+    if (error) {
+      throw error;
     }
-  );
+    response.status(200).json(results.rows);
+  });
 };
 
 const getCustomer = (email) => {
@@ -103,7 +100,7 @@ const addCustomer = (name, email, address, hash, phone) => {
 const addOrder = (quantity, total, order_date, customer_id, product_id) => {
   return new Promise((resolve, reject) =>
     pool.query(
-      'INSERT INTO order_product(quantity, total, order_date, customer_id, product_id) VALUES($1, $2, $3, $4, $5)',
+      'INSERT INTO orders(quantity, total, order_date, customer_id, product_id) VALUES($1, $2, $3, $4, $5)',
       [quantity, total, order_date, customer_id, product_id],
       (error, results) => {
         if (error) {
