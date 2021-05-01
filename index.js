@@ -13,7 +13,7 @@ app.use(authRouter);
 
 app.get('/', async (req, res) => {
   const productss = db.listProducts;
-  console.log(listProducts);
+  console.log(productss);
   res.send(storeTemplate({ products }));
 });
 
