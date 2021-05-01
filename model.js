@@ -109,30 +109,30 @@ const addLogin = (hash, email) => {
 };
 
 const listProducts = (request, response) => {
-  // return new Promise((resolve, reject) =>
-  //   pool.query(
-  //     'SELECT * FROM product ORDER BY product_id ASC',
-  //     (error, results) => {
-  //       if (error) {
-  //         throw error;
-  //       } else if (results.rows.length > 0) {
-  //         resolve(results);
-  //       } else {
-  //         resolve(false);
-  //       }
-  //     }
-  //   )
-  // );
-  pool.query(
-    'SELECT * FROM product ORDER BY product_id ASC',
-    (error, results) => {
-      if (error) {
-        throw error;
+  return new Promise((resolve, reject) =>
+    pool.query(
+      'SELECT * FROM product ORDER BY product_id ASC',
+      (error, results) => {
+        if (error) {
+          throw error;
+        } else if (results.rows.length > 0) {
+          resolve(results.rows);
+        } else {
+          resolve(false);
+        }
       }
-      console.log(JSON.stringify(results.rows));
-      return JSON.stringify(results.rows);
-    }
+    )
   );
+  // pool.query(
+  //   'SELECT * FROM product ORDER BY product_id ASC',
+  //   (error, results) => {
+  //     if (error) {
+  //       throw error;
+  //     }
+  //     console.log(JSON.stringify(results.rows));
+  //     return results.rows;
+  //   }
+  // );
 };
 
 module.exports = {
