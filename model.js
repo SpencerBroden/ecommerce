@@ -115,8 +115,8 @@ const listProducts = (request, response) => {
       if (error) {
         throw error;
       }
-      console.log(JSON.stringify(results.rows));
-      return results.rows;
+      console.log(JSON.stringify(results));
+      return JSON.stringify(results);
     }
   );
 };
