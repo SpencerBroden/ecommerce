@@ -30,7 +30,7 @@ module.exports = ({ req, errors }) => {
                 <p class="help is-danger">${getError(errors, 'address')}</p>
               </div> 
               <div class="field">
-                <label class="label">Phone</label>
+                <label class="label">Phone <small>-Optional</small></label>
                 <input class="input" placeholder="Enter your phone number" type="tel" id="phone" name="phone"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" /> 
                 <small>Format: 123-456-7890</small>

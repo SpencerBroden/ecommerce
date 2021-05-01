@@ -108,6 +108,18 @@ const addLogin = (hash, email) => {
   );
 };
 
+const addOrder = (quantity, total, order_date, customer_id, product_id) => {
+  pool.query(
+    'INSERT INTO order(quantity, total, order_date, customer_id, product_id) VALUES($1, $2, $3, $4, $5)',
+    [quantity, total, order_date, customer_id, product_id],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+    }
+  );
+};
+
 const listProducts = (request, response) => {
   return new Promise((resolve, reject) =>
     pool.query(
@@ -126,6 +138,7 @@ const listProducts = (request, response) => {
 };
 
 module.exports = {
+  addOrder,
   listProducts,
   addLogin,
   getUsers,

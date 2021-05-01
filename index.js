@@ -3,6 +3,7 @@ const cors = require('cors');
 
 const authRouter = require('./routes/auth');
 const storeTemplate = require('./views/store/index');
+const products = require('./products.json');
 const app = express();
 const db = require('./model');
 app.use(express.urlencoded({ extended: true }));
@@ -12,11 +13,17 @@ app.use(authRouter);
 
 app.get('/', async (req, res) => {
   try {
-    const products = await db.listProducts();
+    //const products = await db.listProducts();
     res.send(storeTemplate({ products }));
   } catch {
-    res.send(storeTemplate({}));
+    res.send(storeTemplate({ products }));
   }
+});
+
+app.post('/', async (req, res) => {
+  const { quantity, price, customer_id, product_id } = req.body;
+  db.addOrder(quantity, price, Date(), 1, 1);
+  res.redirect('/');
 });
 
 app.get('/api/users', db.getUsers);
