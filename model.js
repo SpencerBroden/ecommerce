@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 
 let connString = process.env.DATABASE_URL;
-
+const dbProducts;
 const pool = new Pool({
   connectionString: connString,
   ssl: { rejectUnauthorized: false },
@@ -35,6 +35,7 @@ const getProducts = (request, response) => {
       if (error) {
         throw error;
       }
+      dbProducts = results.rows;
       response.status(200).json(results.rows);
     }
   );
