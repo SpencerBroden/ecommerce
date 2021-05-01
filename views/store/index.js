@@ -7,7 +7,7 @@ module.exports = ({ products }) => {
                 <form method="POST">
                 <input type="hidden" name="product_name" value="${product.product_name}">
                 <input type="hidden" name="price" value="${product.price}">
-                <input type="hidden" name="price" value="${product.product_id}">
+                <input type="hidden" name="product_id" value="${product.product_id}">
                   <p>${product.product_name}</p>
                   <p>$${product.price}</p>
                   <div class="field has-addons has-addons-centered">
