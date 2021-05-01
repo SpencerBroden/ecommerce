@@ -12,8 +12,12 @@ app.use(cors());
 app.use(authRouter);
 
 app.get('/', async (req, res) => {
-  const products = await db.listProducts;
-  res.send(storeTemplate({ products }));
+  try {
+    const products = await db.listProducts;
+    res.send(storeTemplate({ products }));
+  } catch {
+    res.send(storeTemplate({ products }));
+  }
 });
 
 app.get('/api/users', db.getUsers);
