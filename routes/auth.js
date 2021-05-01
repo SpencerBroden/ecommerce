@@ -15,6 +15,7 @@ router.get('/signup', (req, res) => {
 router.post(
   '/signup',
   [
+    check('name').trim(),
     check('email')
       .trim()
       .normalizeEmail()
@@ -37,6 +38,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.send(signupTemplate({ errors }));
     }
+
     const { name, email, password, address, phone } = req.body;
     const customer = await db.addCustomer(name, email, address, phone);
     bcrypt.genSalt(saltRounds, function (err, salt) {
@@ -44,6 +46,7 @@ router.post(
         db.addLogin(hash, email);
       });
     });
+
     res.redirect('/');
   }
 );

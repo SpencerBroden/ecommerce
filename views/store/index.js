@@ -7,7 +7,7 @@ module.exports = ({ products }) => {
     .map((product) => {
       return `
       <tr>
-        <td>${product.title}</td>
+        <td>${product.name}</td>
         <td>${product.price}</td>
         <td>
             <input type="text" id="quantity" name="quantity">

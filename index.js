@@ -12,6 +12,7 @@ app.use(cors());
 app.use(authRouter);
 
 app.get('/', async (req, res) => {
+  const products = db.getProducts;
   res.send(storeTemplate({ products }));
 });
 
