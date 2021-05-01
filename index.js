@@ -11,11 +11,6 @@ app.use(express.json());
 app.use(cors());
 app.use(authRouter);
 
-app.get('/', async (req, res) => {
-  const products = db.getProducts.json();
-  res.send(storeTemplate({ products }));
-});
-
 app.get('/api/users', db.getUsers);
 
 app.get('/api/hashs', db.getLogins);
@@ -23,6 +18,13 @@ app.get('/api/hashs', db.getLogins);
 app.get('/api/products', db.getProducts);
 
 app.get('/api/orders', db.getOrders);
+
+app.get('/', async (req, res) => {
+  fetch(
+    'https://csc174-ecommerce-project.herokuapp.com/api/products'
+  ).then((response) => response.json());
+  res.send(storeTemplate({ response }));
+});
 
 app.listen(process.env.PORT || 4000, () => {
   console.log(`app is running on port ${process.env.PORT || 4000}`);
