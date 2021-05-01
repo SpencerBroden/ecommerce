@@ -19,7 +19,13 @@ router.post(
       .trim()
       .normalizeEmail()
       .isEmail()
-      .withMessage('Must be a valid email'),
+      .withMessage('Must be a valid email')
+      .custom(async (email) => {
+        const existingUser = await db.getCustomer({ email });
+        if (existingUser) {
+          throw new Error('Email in use');
+        }
+      }),
     check('password')
       .trim()
       .isLength({ min: 4, max: 20 })

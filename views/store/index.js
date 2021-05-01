@@ -41,6 +41,7 @@ module.exports = ({ products }) => {
       <div class="container">
       </br></br>
       <a href="/api/users" class="button is-primary">Check Customers</a>
+      <a href="/api/users" class="button is-primary">Check Login Hash</a>
       <a href="/api/products" class="button is-primary">Check Products</a>
       <a href="/api/orders" class="button is-primary">Check Orders</a>
     </div>
