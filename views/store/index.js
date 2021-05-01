@@ -7,6 +7,7 @@ module.exports = ({ products }) => {
       <form method="POST">
       <input type="hidden" name="product_name" value="${product.product_name}">
       <input type="hidden" name="price" value="${product.price}">
+      <input type="hidden" name="price" value="${product.product_id}">
       <tr>
         <td>${product.product_name}</td>
         <td>${product.price}</td>
