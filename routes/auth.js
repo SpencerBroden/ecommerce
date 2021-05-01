@@ -22,7 +22,7 @@ router.post(
       .isEmail()
       .withMessage('Must be a valid email')
       .custom(async (email) => {
-        const existingUser = await db.getCustomer({ email });
+        const existingUser = db.getCustomer({ email });
         if (existingUser) {
           throw new Error('Email in use');
         }
