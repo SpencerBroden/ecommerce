@@ -19,6 +19,15 @@ const getUsers = (request, response) => {
   );
 };
 
+const getLogins = (request, response) => {
+  pool.query('SELECT * FROM login ORDER BY login_id ASC', (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
+
 const getProducts = (request, response) => {
   pool.query(
     'SELECT * FROM product ORDER BY product_id ASC',
@@ -86,8 +95,7 @@ const addCustomer = (name, email, password, address, phone) => {
     }
   );
 };
-
-const addCart = (req) => {
+const addLogin = (hash, email) => {
   pool.query(
     'INSERT INTO login(hash, email) VALUES($1, $2)',
     [hash, email],
@@ -100,7 +108,9 @@ const addCart = (req) => {
 };
 
 module.exports = {
+  addLogin,
   getUsers,
+  getLogins,
   getProducts,
   getOrders,
   addCustomer,

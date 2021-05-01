@@ -1,8 +1,9 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const { check } = require('express-validator');
 const signupTemplate = require('../views/auth/signup');
-
+const saltRounds = 10;
 const db = require('../model');
 
 const router = express.Router();
@@ -31,8 +32,12 @@ router.post(
       return res.send(signupTemplate({ errors }));
     }
     const { name, email, password, address, phone } = req.body;
-    const user = await db.addCustomer(name, email, password, address, phone);
-
+    const customer = await db.addCustomer(name, email, address, phone);
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+      bcrypt.hash(password, salt, function (err, hash) {
+        db.addLogin(hash, email);
+      });
+    });
     res.redirect('/');
   }
 );
