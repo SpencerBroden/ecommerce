@@ -1,22 +1,22 @@
 [
   {
-    "title": "Khaki Pants",
+    "name": "Khaki Pants",
     "price": 39
   },
   {
-    "title": "Floral Dress",
+    "name": "Floral Dress",
     "price": 25
   },
   {
-    "title": "Shirt",
+    "name": "Shirt",
     "price": 19
   },
   {
-    "title": "Winter Gloves",
+    "name": "Winter Gloves",
     "price": 15
   },
   {
-    "title": "Jeans",
+    "name": "Jeans",
     "price": 49
   }
 ]
