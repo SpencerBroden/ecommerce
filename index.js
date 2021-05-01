@@ -27,13 +27,17 @@ app.post('/', async (req, res) => {
   if (!quantity) {
     res.redirect('/');
   }
-  await db.addOrder(
-    quantity,
-    total,
-    to_timestamp(Date.now() / 1000),
-    1,
-    product_id
-  );
+  try {
+    await db.addOrder(
+      quantity,
+      total,
+      to_timestamp(Date.now() / 1000),
+      1,
+      product_id
+    );
+  } catch {
+    res.redirect('/');
+  }
   res.redirect('/');
 });
 

@@ -116,7 +116,7 @@ const addOrder = (quantity, total, order_date, customer_id, product_id) => {
       (error, results) => {
         if (error) {
           throw error;
-        } else if (quantity > 0) {
+        } else if (result.rows.length > 0) {
           resolve(true);
         } else {
           resolve(false);
