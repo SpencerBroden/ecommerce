@@ -30,7 +30,8 @@ router.post(
     check('password')
       .trim()
       .isLength({ min: 4, max: 20 })
-      .withMessage('Must be between 4 and 20 characters'),
+      .withMessage('Must be between 4 and 20 characters')
+      .optional({ nullable: true }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -40,10 +41,10 @@ router.post(
     }
 
     const { name, email, password, address, phone } = req.body;
-    const customer = await db.addCustomer(name, email, address, phone);
+    //const customer = await db.addCustomer(name, email, address, phone);
     bcrypt.genSalt(saltRounds, function (err, salt) {
       bcrypt.hash(password, salt, function (err, hash) {
-        db.addLogin(hash, email);
+        db.addCustomer(name, email, address, hash, phone);
       });
     });
 

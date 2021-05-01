@@ -21,7 +21,7 @@ module.exports = ({ req, errors }) => {
               </div>
               <div class="field">
                 <label class="label">Password</label>
-                <input required class="input" placeholder="Password" name="password" type="password" />
+                <input class="input" placeholder="Password" name="password" type="password" />
                 <p class="help is-danger">${getError(errors, 'password')}</p>
               </div>
               <div class="field">
