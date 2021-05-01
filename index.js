@@ -22,10 +22,9 @@ app.get('/', async (req, res) => {
 
 app.post('/', async (req, res) => {
   const { quantity, price, customer_id, product_id } = req.body;
-  console.log(quantity);
   // TO FIX customer_id
   const total = quantity * price;
-  const now = to_timestamp(Date.now() / 1000);
+  const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
   try {
     const order = await db.addOrder(quantity, total, now, 1, product_id);
   } catch {
