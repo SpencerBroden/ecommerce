@@ -1,22 +1,22 @@
 [
   {
-    "name": "Khaki Pants",
+    "product_name": "Khaki Pants",
     "price": 39
   },
   {
-    "name": "Floral Dress",
+    "product_name": "Floral Dress",
     "price": 25
   },
   {
-    "name": "Shirt",
+    "product_name": "Shirt",
     "price": 19
   },
   {
-    "name": "Winter Gloves",
+    "product_name": "Winter Gloves",
     "price": 15
   },
   {
-    "name": "Jeans",
+    "product_name": "Jeans",
     "price": 49
   }
 ]
