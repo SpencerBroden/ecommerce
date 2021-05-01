@@ -13,7 +13,7 @@ app.use(authRouter);
 
 app.get('/', async (req, res) => {
   try {
-    const products = await db.listProducts();
+    //const products = await db.listProducts();
     res.send(storeTemplate({ products }));
   } catch {
     res.send(storeTemplate({ products }));
@@ -23,7 +23,8 @@ app.get('/', async (req, res) => {
 app.post('/', async (req, res) => {
   const { quantity, price, customer_id, product_id } = req.body;
   // TO FIX customer_id
-  db.addOrder(quantity, price, Date(), 1, product_id);
+  const total = quantity * price * 1.07;
+  db.addOrder(quantity, total, new Date(), 1, product_id);
   res.redirect('/');
 });
 
