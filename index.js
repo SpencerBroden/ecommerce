@@ -6,6 +6,7 @@ const storeTemplate = require('./views/store/index');
 const products = require('./products.json');
 const app = express();
 const db = require('./model');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
