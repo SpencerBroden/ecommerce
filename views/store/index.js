@@ -1,7 +1,5 @@
 const layout = require('../layout');
 
-let cart;
-
 module.exports = ({ products }) => {
   const renderedProducts = products
     .map((product) => {
