@@ -4,19 +4,19 @@ module.exports = ({ products }) => {
   const renderedProducts = products
     .map((product) => {
       return `
-      <input form="${product.product_id}" type="hidden" name="product_name" value="${product.product_name}">
-      <input form="${product.product_id}" type="hidden" name="price" value="${product.price}">
-      <input form="${product.product_id}" type="hidden" name="price" value="${product.product_id}">
-        <tr>
-          <td>${product.product_name}</td>
-          <td>${product.price}</td>
-          <td>
-              <input form="${product.product_id}" required class="input" type="text" name="quantity">
-          </td>
-          <td>
-          <form id="${product.product_id}" method="POST"><button class="button is-link">Order</button></form>
-          </td>
-        </tr>
+                <form method="POST">
+                <input type="hidden" name="product_name" value="${product.product_name}">
+                <input type="hidden" name="price" value="${product.price}">
+                <input type="hidden" name="price" value="${product.product_id}">
+                  <p>${product.product_name}</p>
+                  <p>$${product.price}</p>
+                  <div class="field has-addons has-addons-centered">
+                  <input required class="input" placeholder="Quantity" type="text" name="quantity">
+                  <button class="button is-link">Order</button>
+                  </div>
+                </form>
+                </br>
+
     `;
     })
     .join('');
@@ -35,10 +35,12 @@ module.exports = ({ products }) => {
             <th>Order</th>
           </tr>
         </thead>
-        <tbody>
-          ${renderedProducts}
-        </tbody>
       </table>
+      <div class="container ">
+      <div class="column is-one-quarter">
+          ${renderedProducts}
+      </div>
+      </div>
       <div class="container">
         </br>
         <a href="/api/users" class="button is-primary">Check Customers</a>
