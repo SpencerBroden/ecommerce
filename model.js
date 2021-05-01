@@ -77,7 +77,7 @@ const getProduct = () => {
 
 const addCustomer = (name, email, password, address, phone) => {
   pool.query(
-    'INSERT INTO customer(name, email, address, phone) VALUES($1, $2, $3, $4, $5)',
+    'INSERT INTO customer(name, email, address, phone) VALUES($1, $2, $3, $4)',
     [name, email, address, phone],
     (error, results) => {
       if (error) {
