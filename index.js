@@ -27,7 +27,7 @@ app.post('/', async (req, res) => {
   const total = quantity * price;
   const now = to_timestamp(Date.now() / 1000);
   try {
-    db.addOrder(quantity, total, now, 1, product_id);
+    const order = await db.addOrder(quantity, total, now, 1, product_id);
   } catch {
     res.redirect('/');
   }
