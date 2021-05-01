@@ -38,10 +38,6 @@ router.post(
     if (!errors.isEmpty()) {
       return res.send(signupTemplate({ errors }));
     }
-    const existingUser = await db.getCustomer({ email });
-    if (existingUser) {
-      return res.send(signupTemplate({ errors }));
-    }
     const { name, email, password, address, phone } = req.body;
     bcrypt.genSalt(saltRounds, function (err, salt) {
       bcrypt.hash(password, salt, function (err, hash) {
