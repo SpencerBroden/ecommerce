@@ -4,27 +4,26 @@ module.exports = ({ products }) => {
   const renderedProducts = products
     .map((product) => {
       return `
-      <form method="POST">
-      <input type="hidden" name="product_name" value="${product.product_name}">
-      <input type="hidden" name="price" value="${product.price}">
-      <input type="hidden" name="price" value="${product.product_id}">
-      <tr>
-        <td>${product.product_name}</td>
-        <td>${product.price}</td>
-        <td>
-            <input class="input" type="text" name="quantity">
-        </td>
-        <td>
-            <button class="button is-link">Order</button>
-        </td>
-      </tr>
-      </form>
+      <input form="myform" type="hidden" name="product_name" value="${product.product_name}">
+      <input form="myform" type="hidden" name="price" value="${product.price}">
+      <input form="myform" type="hidden" name="price" value="${product.product_id}">
+        <tr>
+          <td>${product.product_name}</td>
+          <td>${product.price}</td>
+          <td>
+              <input form="myform" required class="input" type="text" name="quantity">
+          </td>
+          <td>
+              <button form="myform" class="button is-link">Order</button>
+          </td>
+        </tr>
     `;
     })
     .join('');
 
   return layout({
     content: `
+    <form id="myform" method="POST">
       <div class="control">
         <h1 class="subtitle">Products</h1>  
       </div>
@@ -41,6 +40,7 @@ module.exports = ({ products }) => {
           ${renderedProducts}
         </tbody>
       </table>
+      </form
       <div class="container">
         </br>
         <a href="/api/users" class="button is-primary">Check Customers</a>
