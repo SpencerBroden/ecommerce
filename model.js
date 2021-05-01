@@ -122,6 +122,7 @@ const listProducts = (request, response) => {
 };
 
 module.exports = {
+  listProducts,
   addLogin,
   getUsers,
   getLogins,
