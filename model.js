@@ -110,7 +110,7 @@ const addLogin = (hash, email) => {
 
 const addOrder = (quantity, total, order_date, customer_id, product_id) => {
   pool.query(
-    'INSERT INTO order(quantity, total, order_date, customer_id, product_id) VALUES($1, $2, $3, $4, $5)',
+    'INSERT INTO order_product(quantity, total, order_date, customer_id, product_id) VALUES($1, $2, $3, $4, $5)',
     [quantity, total, order_date, customer_id, product_id],
     (error, results) => {
       if (error) {
