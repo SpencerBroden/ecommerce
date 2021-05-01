@@ -23,7 +23,7 @@ app.get('/', async (req, res) => {
 app.post('/', async (req, res) => {
   const { quantity, price, customer_id, product_id } = req.body;
   // TO FIX customer_id
-  const total = quantity * price * 1.07;
+  const total = quantity * price;
   db.addOrder(quantity, total, new Date(), 1, product_id);
   res.redirect('/');
 });
