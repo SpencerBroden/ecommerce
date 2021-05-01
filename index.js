@@ -17,7 +17,7 @@ app.get('/', async (req, res) => {
 
 app.get('/api/users', db.getUsers);
 
-app.get('/api/hash', db.getLogins);
+app.get('/api/hashs', db.getLogins);
 
 app.get('/api/products', db.getProducts);
 
