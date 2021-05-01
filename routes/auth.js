@@ -22,7 +22,7 @@ router.post(
       .isEmail()
       .withMessage('Must be a valid email')
       .custom(async (email) => {
-        const existingUser = db.getCustomer({ email });
+        const existingUser = await db.getCustomer({ email });
         if (existingUser) {
           throw new Error('Email in use');
         }
@@ -38,8 +38,11 @@ router.post(
     if (!errors.isEmpty()) {
       return res.send(signupTemplate({ errors }));
     }
+    const existingUser = await db.getCustomer({ email });
+    if (existingUser) {
+      return res.send(signupTemplate({ errors }));
+    }
     const { name, email, password, address, phone } = req.body;
-
     bcrypt.genSalt(saltRounds, function (err, salt) {
       bcrypt.hash(password, salt, function (err, hash) {
         db.addCustomer(name, email, address, hash, phone);
