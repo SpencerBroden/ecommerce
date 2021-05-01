@@ -8,7 +8,7 @@ module.exports = ({ products }) => {
         <td>${product.name}</td>
         <td>${product.price}</td>
         <td>
-            <input type="text" id="quantity" name="quantity">
+            <input type="text" name="quantity">
         </td>
         <td>
             <button class="button is-link">Add</button>

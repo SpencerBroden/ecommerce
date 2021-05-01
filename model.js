@@ -85,7 +85,7 @@ const getProduct = () => {
   );
 };
 
-const addCustomer = (name, email, password, address, phone) => {
+const addCustomer = (name, email, address, phone) => {
   pool.query(
     'INSERT INTO customer(name, email, address, phone) VALUES($1, $2, $3, $4)',
     [name, email, address, phone],
@@ -115,8 +115,8 @@ const listProducts = (request, response) => {
       if (error) {
         throw error;
       }
-      console.log(JSON.stringify(response.json(results.rows)));
-      return JSON.stringify(response.json(results.rows));
+      console.log(results);
+      return results;
     }
   );
 };
