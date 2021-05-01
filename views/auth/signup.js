@@ -26,12 +26,12 @@ module.exports = ({ req, errors }) => {
               </div>
               <div class="field">
                 <label class="label">Address</label>
-                <input required class="input" placeholder="Enter your address"" name="address" type="text" />
+                <input class="input" placeholder="Enter your address"" name="address" type="text" />
                 <p class="help is-danger">${getError(errors, 'address')}</p>
               </div> 
               <div class="field">
                 <label class="label">Phone</label>
-                <input required class="input" placeholder="Enter your phone number" type="tel" id="phone" name="phone"
+                <input class="input" placeholder="Enter your phone number" type="tel" id="phone" name="phone"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" /> 
                 <small>Format: 123-456-7890</small>
                 <p class="help is-danger">${getError(errors, 'phone')}</p>
