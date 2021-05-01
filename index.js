@@ -22,6 +22,7 @@ app.get('/', async (req, res) => {
 
 app.post('/', async (req, res) => {
   const { quantity, price, customer_id, product_id } = req.body;
+  console.log(quantity);
   // TO FIX customer_id
   const total = quantity * price;
   const now = to_timestamp(Date.now() / 1000);
