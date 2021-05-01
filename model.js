@@ -20,15 +20,12 @@ const getUsers = (request, response) => {
 };
 
 const getLogins = (request, response) => {
-  pool.query(
-    'SELECT customer_id, hash, email FROM customer WHERE hash is not null ORDER BY customer_id ASC',
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
-      response.status(200).json(results.rows);
+  pool.query('SELECT * FROM login_user', (error, results) => {
+    if (error) {
+      throw error;
     }
-  );
+    response.status(200).json(results.rows);
+  });
 };
 
 const getProducts = (request, response) => {
