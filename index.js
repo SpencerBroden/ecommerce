@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 app.use(authRouter);
 
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
   const products = db.listProducts;
   res.send(storeTemplate({ products }));
 });
