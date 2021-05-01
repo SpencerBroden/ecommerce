@@ -33,7 +33,7 @@ const getProducts = (request, response) => {
 
 const getOrders = (request, response) => {
   pool.query(
-    'SELECT * FROM `order` ORDER BY order_id ASC',
+    'SELECT * FROM order_product ORDER BY order_id ASC',
     (error, results) => {
       if (error) {
         throw error;
