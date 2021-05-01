@@ -108,6 +108,19 @@ const addLogin = (hash, email) => {
   );
 };
 
+const listProducts = (request, response) => {
+  pool.query(
+    'SELECT * FROM product ORDER BY product_id ASC',
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      console.log(results.rows);
+      return JSON.parse(results.rows);
+    }
+  );
+};
+
 module.exports = {
   addLogin,
   getUsers,
