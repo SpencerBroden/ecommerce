@@ -11,7 +11,7 @@ module.exports = ({ products }) => {
             <input type="text" name="quantity">
         </td>
         <td>
-            <button class="button is-link">Add</button>
+            <button class="button is-link">Order</button>
         </td>
       </tr>
     `;
@@ -29,7 +29,7 @@ module.exports = ({ products }) => {
             <th>Name</th>
             <th>Price</th>
             <th>Quantity</th>
-            <th>Add</th>
+            <th>Order</th>
           </tr>
         </thead>
         <tbody>

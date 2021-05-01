@@ -3,7 +3,6 @@ const cors = require('cors');
 
 const authRouter = require('./routes/auth');
 const storeTemplate = require('./views/store/index');
-const products = require('./products.json');
 const app = express();
 const db = require('./model');
 app.use(express.urlencoded({ extended: true }));
@@ -16,7 +15,7 @@ app.get('/', async (req, res) => {
     const products = await db.listProducts();
     res.send(storeTemplate({ products }));
   } catch {
-    res.send(storeTemplate({ products }));
+    res.send(storeTemplate({}));
   }
 });
 

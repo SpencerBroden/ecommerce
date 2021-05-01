@@ -123,16 +123,6 @@ const listProducts = (request, response) => {
       }
     )
   );
-  // pool.query(
-  //   'SELECT * FROM product ORDER BY product_id ASC',
-  //   (error, results) => {
-  //     if (error) {
-  //       throw error;
-  //     }
-  //     console.log(JSON.stringify(results.rows));
-  //     return results.rows;
-  //   }
-  // );
 };
 
 module.exports = {
