@@ -21,12 +21,8 @@ router.post(
       .normalizeEmail()
       .isEmail()
       .withMessage('Must be a valid email')
-      // not catching the email in use
       .custom(async (email) => {
-        const existingUser = '';
-        await db.getCustomer({ email }).then((response) => {
-          existingUser = response.data;
-        });
+        const existingUser = await db.getCustomer({ email }); //bug not woorking to validatedd email in use crash node
         if (existingUser) {
           throw new Error('Email in use');
         }
