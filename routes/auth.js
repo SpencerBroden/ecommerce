@@ -24,7 +24,7 @@ router.post(
       // not catching the email in use
       .custom(async (email) => {
         const existingUser = '';
-        db.getCustomer({ email }).then((response) => {
+        await db.getCustomer({ email }).then((response) => {
           existingUser = response.data;
         });
         if (existingUser) {
