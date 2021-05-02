@@ -1,7 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const { validationResult } = require('express-validator');
-const { check } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 const signupTemplate = require('../views/auth/signup');
 const saltRounds = 10;
 const db = require('../model');
@@ -22,7 +21,7 @@ router.post(
       .isEmail()
       .withMessage('Must be a valid email')
       .custom(async (email) => {
-        const existingUser = await db.getCustomer({ email }); //bug not woorking to validatedd email in use crash node
+        const existingUser = await db.getCustomer({ email }); //bug not working to validated email in use - crash node
         if (existingUser) {
           throw new Error('Email in use');
         }
